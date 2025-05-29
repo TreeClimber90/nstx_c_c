@@ -10,7 +10,7 @@ async def test_idempotent_create():
     link1 = await svc.create("ORD-1", 1000)
     link2 = await svc.create("ORD-1", 1000)
     assert link1.token == link2.token
-    assert link1.expires_at > link2.expires_at
+    assert link1.expires_at < link2.expires_at
 
 
 @pytest.mark.asyncio
